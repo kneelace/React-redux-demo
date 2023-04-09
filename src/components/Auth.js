@@ -1,5 +1,7 @@
 import classes from './Auth.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { authActions } from '../store/redux-index';
+import { counterActions } from '../store/redux-index';
 
 const Auth = () => {
 
@@ -8,15 +10,13 @@ const Auth = () => {
     const onSubmitHandler = (event) => {
 
         event.preventDefault();
-        loginDispatch({ type: 'authToggle' })
-
-
+        loginDispatch(authActions.toggleAuth())
     }
 
 
     return (
         <>
-            {!isAuthenticated && <main className={classes.auth}>
+            <main className={classes.auth}>
                 <section>
                     <form onSubmit={onSubmitHandler}>
                         <div className={classes.control}>
@@ -34,7 +34,7 @@ const Auth = () => {
                         </div>
                     </form>
                 </section>
-            </main>}
+            </main>
         </>
     )
 }

@@ -1,14 +1,14 @@
 import classes from './Header.module.css';
 
 import { useDispatch, useSelector } from 'react-redux';
-
+import { authActions } from '../store/redux-index';
 const Header = () => {
 
-    const isAuthenticated = useSelector(state => state.isAuthenticated);
+    const isAuthenticated = useSelector(state => state.authentication.isAuthenticated);
     const logoutDispatch = useDispatch();
 
     const logoutHandler = () => {
-        logoutDispatch({ type: 'authToggle' })
+        logoutDispatch(authActions.toggleAuth())
 
     }
 
